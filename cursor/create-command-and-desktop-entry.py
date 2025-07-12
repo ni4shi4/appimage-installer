@@ -42,7 +42,7 @@ def main():
 
     print(f"Creating desktop entry to {desktop_entry_path}")
     with open(extracted_dir / f"{binary_name}.desktop", "r") as f:
-        desktop_entry = f.read().replace("AppRun", binary_name)
+        desktop_entry = f.read().replace(f"Exec={binary_name} ", f"Exec={binary_name} --no-sandbox ")
     with open(desktop_entry_path, "w") as f:
         f.write(desktop_entry)
 
