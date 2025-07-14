@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from common.create_command_and_desktop_entry import CreateCommandAndDesktopEntry
@@ -9,11 +10,15 @@ class CursorCreateCommandAndDesktopEntry(CreateCommandAndDesktopEntry):
             "cursor", "Cursor", "co.anysphere.cursor", Path(__file__).parent
         )
 
+    def create_symlink_to_executable_file(self):
+        print(f"Creating symlink to executable file to {self.command_path}")
+        if os.path.isfile(self.command_path) or os.path.islink(self.command_path):
+            os.remove(self.command_path)
+        os.symlink(self.extracted_dir / "usr/bin/cursor", self.command_path)
+
     def create_desktop_entry(self):
-        with open(self.extracted_dir / f"{self.binary_name}.desktop", "r") as f:
-            desktop_entry = f.read().replace(
-                f"Exec={self.binary_name} ", f"Exec={self.binary_name} --no-sandbox "
-            )
+        with open(self.extracted_dir / "cursor.desktop", "r") as f:
+            desktop_entry = f.read().replace("Exec=cursor", "Exec=cursor --no-sandbox ")
         with open(self.desktop_entry_path, "w") as f:
             f.write(desktop_entry)
 
