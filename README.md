@@ -15,4 +15,3 @@ AppImageを`~/Downloads`配下にダウンロードした後に、インスト�
 ```bash
 uv run obsidian/main.py -v 1.8.10
 ```
-

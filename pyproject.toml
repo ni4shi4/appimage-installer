@@ -29,5 +29,5 @@ inline-quotes = "double"
 multiline-quotes = "double"
 
 [tool.mypy]
-# follow_untyped_imports = true
 mypy_path = "src"
+explicit_package_bases = true
