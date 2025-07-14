@@ -7,12 +7,12 @@
 uv run create-environment.py -b obsidian -a Obsidian
 ```
 
-バイナリと同名のディレクトリ配下にインストールスクリプト`create-command-and-desktop-entry.py`が作成される。Appimageごとにディレクトリ構成が異なるので、バイナリへのパス等を編集する
+バイナリと同名のディレクトリ配下にインストールスクリプト`main.py`が作成される。Appimageごとにディレクトリ構成等が異なるので、必要に応じてメソッドのオーバーライドする([Cursor向けスクリプト](./cursor/main.py))
 
 AppImageを`~/Downloads`配下にダウンロードした後に、インストールするためのスクリプトを実行する
 
 - 例
 ```bash
-uv run obsidian/create-command-and-desktop-entry.py -v 1.8.10
+uv run obsidian/main.py -v 1.8.10
 ```
 
