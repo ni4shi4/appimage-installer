@@ -1,0 +1,14 @@
+from pathlib import Path
+
+from common.create_command_and_desktop_entry import CreateCommandAndDesktopEntry
+
+
+def main():
+    executor = CreateCommandAndDesktopEntry(
+        "lm-studio", "LM-Studio", "lm-studio", Path(__file__).parent
+    )
+    executor.main()
+
+
+if __name__ == "__main__":
+    main()
